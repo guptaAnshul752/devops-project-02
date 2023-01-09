@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment{
-        dockercredentials=credentials('dockerhub') 
+        dockerhub=credentials('dockerhub') 
     }
     
     stages {
@@ -30,9 +30,9 @@ pipeline {
         
         stage('Push images to hub') {
             steps {
-                bat 'echo $dockercredentials_PSW | docker login -u $dockercredentials_USR --password-stdin '
-                bat 'docker image tag springboot-backend:1.0 guptaanshul752/springboot-backend:1.0'
-                bat 'docker image push guptaanshul752/springboot-backend:$BUILD_NUMBER'
+                bat 'docker tag springboot-backend:1.0 guptaanshul752/springboot-backend:1.0 '
+                bat 'echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin '
+                bat 'docker image push guptaanshul752/springboot-backend:1.0'
                 
                 bat 'docker image tag react-frontend:0.1 guptaanshul752/react-frontend:1.0'
                 bat 'docker image push guptaanshul752/react-frontend:1.0'
