@@ -1,11 +1,6 @@
 pipeline {
     agent any
     
-    tools{
-        maven '3.8.6'
-        nodejs '16.10.0'
-    }
-    
     stages {
         
         stage('Build & Package spring app') {
