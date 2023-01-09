@@ -13,7 +13,7 @@ services:
   #    - mysql-data:/var/lib/mysql
 
   springboot-backend:
-    image: lugar2020/backend
+    image: openjdk:8
     restart: always
     ports:
      - 8085:8085
@@ -23,7 +23,7 @@ services:
    #  - mysqldb
 
   react-frontend:
-    image: lugar2020/frontend
+    image: nginx:1.17.1-alpine
     restart: always
     ports:
      - 3000:3000
